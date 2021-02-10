@@ -1,34 +1,38 @@
-.Column {
-  min-width: min(460px, 80%) !important;
-  flex: 0 0 !important;
-  display: Flex !important;
-  flex-direction: column !important;
-  margin-left: 5px !important;
-  margin-right: 5px !important;
-  margin-bottom: 5px !important;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  background-color: #ededed !important;
-  box-shadow: 2px 2px 1px rgba(34, 36, 38, 0.15) !important;
-  border-radius: 0.5em !important;
+#root .Column {
+  min-width: min(460px, 80%);
+  flex: 0 0;
+  display: Flex;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #ededed;
+  box-shadow: 2px 2px 1px rgba(34, 36, 38, 0.15);
+  border-radius: 0.5em;
 }
 
-.Column .Title {
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: flex-start !important;
+#root .Column .ui.input {
+  flex-grow: 1;
 }
 
-.Column .Title input {
-  flex-grow: 1 !important;
-  padding-right: 8px !important;
+#root .Column .Title {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.Tickets {
-  overflow-y: scroll !important;
-  height: -webkit-fill-available !important;
-  padding-left: 10px !important;
-  padding-right: 5px !important;
+#root .Column .Title input {
+  flex-grow: 1;
+  padding-right: 8px;
+}
+
+#root .Tickets {
+  overflow-y: scroll;
+  height: -webkit-fill-available;
+  padding-left: 10px;
+  padding-right: 5px;
 }

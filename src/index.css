@@ -20,7 +20,7 @@ code {
     monospace;
 }
 
-.md {
+#root .md {
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -32,26 +32,26 @@ code {
   hyphens: auto;
 }
 
-.md img {
+#root .md img {
   width: 100%;
 }
 
-.flex {
+#root .flex {
   display: flex;
 }
 
-.grow {
+#root .grow {
   flex-grow: 1;
 }
 
-.GROW {
+#root .GROW {
   flex-grow: 1 !important;
 }
 
-.flex.between {
+#root .flex.between {
   justify-content: space-between;
 }
 
-.black {
+#root .black {
   color: #000000;
 }

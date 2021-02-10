@@ -1,27 +1,27 @@
-.Tickets > .New.inactive {
-  display: flex !important;
-  justify-content: center !important;
-  padding-top: 10px !important;
+#root .Tickets > .New.inactive {
+  display: flex ;
+  justify-content: center ;
+  padding-top: 10px ;
 }
 
-.Tickets > .New.active {
-  margin-top: 10px !important;
-  background-color: #fefefe !important;
-  padding: 10px !important;
+#root .Tickets > .New.active {
+  margin-top: 10px ;
+  background-color: #fefefe ;
+  padding: 10px ;
 }
 
-.Tickets > .New.active .input,
-.Tickets > .New.active .button,
-.Tickets > .New.active .field > textarea {
-  width: 100% !important;
+#root .Tickets > .New.active .input,
+#root .Tickets > .New.active .button,
+#root .Tickets > .New.active .field > textarea {
+  width: 100% ;
 }
 
-.Tickets > .New.active .field > textarea {
-  margin-top: 10px !important;
-  resize: vertical !important;
-  padding: 1em !important;
+#root .Tickets > .New.active .field > textarea {
+  margin-top: 10px ;
+  resize: vertical ;
+  padding: 1em ;
 }
 
-.Tickets > .New.active .button {
-  margin-top: 10px !important;
+#root .Tickets > .New.active .button {
+  margin-top: 10px ;
 }

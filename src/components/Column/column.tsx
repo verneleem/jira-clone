@@ -49,7 +49,6 @@ const Column: React.FC<ColumnProps> = (props) => {
                   placeholder="Column Name"
                   value={name}
                   onChange={(e, { value }) => setName(value)}
-                  fluid
                 />
                 <div className="flex">
                   <Button

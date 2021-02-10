@@ -1,8 +1,8 @@
-.App {
+#root .App {
   height: -webkit-fill-available;
   padding-top: 10em;
 }
 
-.SubHeaderMessage {
+#root .SubHeaderMessage {
   text-align: center;
 }
