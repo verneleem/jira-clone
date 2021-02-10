@@ -1,0 +1,8 @@
+.App {
+  height: -webkit-fill-available;
+  padding-top: 10em;
+}
+
+.SubHeaderMessage {
+  text-align: center;
+}

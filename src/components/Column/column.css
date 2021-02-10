@@ -1,0 +1,34 @@
+.Column {
+  min-width: min(460px, 80%) !important;
+  flex: 0 0 !important;
+  display: Flex !important;
+  flex-direction: column !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+  margin-bottom: 5px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  background-color: #ededed !important;
+  box-shadow: 2px 2px 1px rgba(34, 36, 38, 0.15) !important;
+  border-radius: 0.5em !important;
+}
+
+.Column .Title {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+}
+
+.Column .Title input {
+  flex-grow: 1 !important;
+  padding-right: 8px !important;
+}
+
+.Tickets {
+  overflow-y: scroll !important;
+  height: -webkit-fill-available !important;
+  padding-left: 10px !important;
+  padding-right: 5px !important;
+}

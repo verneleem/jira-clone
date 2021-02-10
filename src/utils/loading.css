@@ -1,0 +1,5 @@
+.Loading {
+  display: flex !important;
+  justify-content: space-evenly !important;
+  height: -webkit-fill-available !important;
+}

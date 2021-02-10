@@ -1,0 +1,39 @@
+fragment columnDetails on Column {
+  colID
+  name
+}
+
+fragment columnWithProjectColumns on Column {
+  colID
+  name
+  inProject {
+    ...projectWithColumns
+  }
+}
+
+fragment projectWithColumns on Project {
+  projID
+  columns {
+    colID
+  }
+}
+
+# --------
+# Mutation
+# --------
+
+mutation addColumn($column: AddColumnInput!) {
+  addColumn(input: [$column]) {
+    column {
+      ...columnWithProjectColumns
+    }
+  }
+}
+
+mutation updateColumnName($colID: ID!, $name: String!) {
+  updateColumn(input: { filter: { colID: [$colID] }, set: { name: $name } }) {
+    column {
+      ...columnDetails
+    }
+  }
+}

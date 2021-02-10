@@ -1,0 +1,124 @@
+fragment columnOrder on Column {
+  colID
+  order
+}
+
+fragment columnWithTickets on Column {
+  colID
+  name
+  tickets {
+    ...ticketDetailsWithComments
+  }
+  order
+}
+
+fragment commentDetails on Comment {
+  id
+  text
+  datetime
+  author {
+    ...userNames
+  }
+}
+
+fragment projectAllDetails on Project {
+  projID
+  name
+  url
+  description
+  order
+}
+
+fragment projectOrder on Project {
+  projID
+  order
+}
+
+fragment roleDetails on Role {
+  id
+  permission
+  assignedTo {
+    ...userNames
+  }
+}
+
+fragment ticketDetailsWithComments on Ticket {
+  id
+  title
+  description
+  assigned {
+    ...userNames
+  }
+  comments(order: { desc: datetime }) {
+    ...commentDetails
+  }
+}
+
+fragment ticketWithColumn on Ticket {
+  ...ticketDetails
+  onColumn {
+    ...columnDetails
+  }
+}
+
+fragment userNames on User {
+  username
+  displayName
+  image
+}
+
+# -----
+# Query
+# -----
+
+query getProject($projectID: ID!) {
+  getProject(projID: $projectID) {
+    ...projectAllDetails
+    admin {
+      ...userNames
+    }
+    roles {
+      ...roleDetails
+    }
+    columns {
+      ...columnWithTickets
+    }
+  }
+}
+
+# --------
+# Mutation
+# --------
+
+mutation moveTicket($id: ID!, $colID: ID!, $order: String!) {
+  updateTicket(
+    input: { filter: { id: [$id] }, set: { onColumn: { colID: $colID } } }
+  ) {
+    ticket {
+      ...ticketWithColumn
+    }
+  }
+  updateColumn(input: { filter: { colID: [$colID] }, set: { order: $order } }) {
+    column {
+      ...columnOrder
+    }
+  }
+}
+
+mutation setColumnOrder($projID: ID!, $order: String!) {
+  updateProject(
+    input: { filter: { projID: [$projID] }, set: { order: $order } }
+  ) {
+    project {
+      ...projectOrder
+    }
+  }
+}
+
+mutation setTicketOrder($colID: ID!, $order: String!) {
+  updateColumn(input: { filter: { colID: [$colID] }, set: { order: $order } }) {
+    column {
+      ...columnOrder
+    }
+  }
+}

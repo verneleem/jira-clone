@@ -1,0 +1,132 @@
+fragment columnDetails on Column {
+  colID
+  name
+}
+
+fragment columnWithTickets on Column {
+  colID
+  name
+  tickets {
+    ...ticketDetailsWithComments
+  }
+  order
+}
+
+fragment commentDetails on Comment {
+  id
+  text
+  datetime
+  author {
+    ...userNames
+  }
+}
+
+fragment ticketDetails on Ticket {
+  id
+  title
+  description
+  assigned {
+    ...userNames
+  }
+}
+
+fragment ticketDetailsWithComments on Ticket {
+  id
+  title
+  description
+  assigned {
+    ...userNames
+  }
+  comments(order: { desc: datetime }) {
+    ...commentDetails
+  }
+}
+
+fragment ticketWithColumn on Ticket {
+  ...ticketDetails
+  onColumn {
+    ...columnDetails
+  }
+}
+
+fragment ticketWithColumnWithTickets on Ticket {
+  ...ticketDetails
+  onColumn {
+    ...columnWithTickets
+  }
+}
+
+fragment userNames on User {
+  username
+  displayName
+  image
+}
+
+# -----
+# Query
+# -----
+
+query allowedUsers($username: String!) {
+  queryUser(
+    filter: { username: { eq: $username } }
+    order: { desc: displayName }
+  ) {
+    ...userNames
+  }
+}
+
+# --------
+# Mutation
+# --------
+
+mutation addComment($comment: AddCommentInput!) {
+  addComment(input: [$comment]) {
+    comment {
+      id
+      onTicket {
+        id
+        comments(order: { desc: datetime }) {
+          ...commentDetails
+        }
+      }
+    }
+  }
+}
+
+mutation addTicket($ticket: AddTicketInput!) {
+  addTicket(input: [$ticket]) {
+    ticket {
+      ...ticketWithColumnWithTickets
+    }
+  }
+}
+
+mutation deleteColumn($colID: ID!) {
+  deleteColumn(filter: { colID: [$colID] }) {
+    column {
+      colID
+    }
+  }
+}
+
+mutation deleteTicket($ticketID: ID!) {
+  deleteTicket(filter: { id: [$ticketID] }) {
+    ticket {
+      id
+    }
+  }
+}
+
+mutation updateTicket(
+  $ticketID: ID!
+  $ticket: TicketPatch
+  $remove: TicketPatch
+) {
+  updateTicket(
+    input: { filter: { id: [$ticketID] }, set: $ticket, remove: $remove }
+  ) {
+    ticket {
+      ...ticketWithColumn
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.Tickets > .New.inactive {
+  display: flex !important;
+  justify-content: center !important;
+  padding-top: 10px !important;
+}
+
+.Tickets > .New.active {
+  margin-top: 10px !important;
+  background-color: #fefefe !important;
+  padding: 10px !important;
+}
+
+.Tickets > .New.active .input,
+.Tickets > .New.active .button,
+.Tickets > .New.active .field > textarea {
+  width: 100% !important;
+}
+
+.Tickets > .New.active .field > textarea {
+  margin-top: 10px !important;
+  resize: vertical !important;
+  padding: 1em !important;
+}
+
+.Tickets > .New.active .button {
+  margin-top: 10px !important;
+}

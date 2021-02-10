@@ -1,0 +1,34 @@
+fragment commentDetails on Comment {
+  id
+  text
+  datetime
+  author {
+    ...userNames
+  }
+}
+
+fragment userNames on User {
+  username
+  displayName
+  image
+}
+
+# --------
+# Mutation
+# --------
+
+mutation deleteComment($commentID: ID!) {
+  deleteComment(filter: { id: [$commentID] }) {
+    comment {
+      id
+    }
+  }
+}
+
+mutation updateComment($commentID: ID!, $commentPatch: CommentPatch!) {
+  updateComment(input: { filter: { id: [$commentID] }, set: $commentPatch }) {
+    comment {
+      ...commentDetails
+    }
+  }
+}

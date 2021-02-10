@@ -1,0 +1,15 @@
+.Board {
+  height: -webkit-fill-available !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.Columns {
+  overflow-x: auto !important;
+  height: -webkit-fill-available !important;
+  display: flex !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  min-width: 100% !important;
+  float: left !important;
+}
